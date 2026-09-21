@@ -1,0 +1,7 @@
+﻿.env
+*.key
+*.secret
+config/
+data/
+logs/
+output/
