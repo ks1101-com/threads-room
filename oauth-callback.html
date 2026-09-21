@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>Threads OAuth Callback</title>
+</head>
+<body>
+<h2>Threads OAuth Callback</h2>
+<p id="status">認証結果を確認中...</p>
+<pre id="result"></pre>
+
+<script>
+const p = new URLSearchParams(location.search);
+const code = p.get("code");
+const error = p.get("error") || p.get("error_message");
+
+if (code) {
+  document.getElementById("status").textContent =
+    "認証コードを受信しました。";
+  document.getElementById("result").textContent =
+    "認証成功。コードは秘密情報なのでチャットには貼らないでください。";
+} else if (error) {
+  document.getElementById("status").textContent = "認証エラー";
+  document.getElementById("result").textContent = error;
+} else {
+  document.getElementById("status").textContent =
+    "認証コードはまだありません。";
+}
+</script>
+</body>
+</html>
